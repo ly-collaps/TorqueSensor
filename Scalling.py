@@ -23,11 +23,11 @@ def cleanAndExit():
     sys.exit()
 
 try:
-    print("Initializing... remove all weight from the torque sensor.")
+    print("Initializing... remove all weights from the arm attached to the torque sensor.")
     time.sleep(2)
     hx.reset()
     hx.tare()
-    print("Tare done. Place a known weight on the sensor.")
+    print("Tare done. Hang a known weight on the arm attached to the sensor.")
 
     known_weight = float(input("Enter the known weight in grams (e.g. 500): "))
 
@@ -37,7 +37,7 @@ try:
 
     if Torque_reading:
         print(f"Raw average reading: {Torque_reading}")
-        Known_torque = known_weight*g*l
+        Known_torque = (known_weight/1000)*g*l
         ratio = Torque_reading / Known_torque
         print(f"Calculated scalling ratio: {ratio}")
         print("Use this ratio in your measurement code as set_scale_ratio().")
