@@ -9,10 +9,10 @@ Volage_half = Voltage/2 #Voltage for 0-10N
 Max_torque= 10 #N.m
 number_bits = 24 #Number of bits
 FS= 1.371    #Output sensitivity in mV/V
-Factor_a = (Voltage*FS)/(Voltage/(1000*Gain)) #Multiplying by 1000 to have mV/mV at the end giving a scale
+Factor_a = (1000*Voltage/Gain)/(Voltage*FS) #Multiplying by 1000 to have mV/mV at the end giving a scale
 
 #----- The equation is Actual_torque = Scale * Raw_reading_from_HX711
-Scale = Factor_a * Max_torque/(2**number_bits) #Scale of the torque in [N.m]
+Scale = Factor_a /(2**number_bits) #Scale of the torque in [N.m]
 
 #------------Pin definition 
 DT_PIN = 5
